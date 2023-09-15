@@ -14,6 +14,16 @@ void displayDatafor1D(int Array[],int Size){
     }
 }
 
+void findMinimum1D(int Array[],int Size){
+    int temp = Array[0];
+    for (int i = 0; i < Size ; i++){
+        if (temp >= Array[i]){
+            temp = Array[i];
+        }
+    }
+    cout << "Minimum Value :" << temp << endl;
+}
+
 void getDatafor2D(int **Array, int Rows, int Columns){
     for (int i = 0 ; i < Rows; i++){
         for (int j = 0; j < Columns; j++){
@@ -23,6 +33,7 @@ void getDatafor2D(int **Array, int Rows, int Columns){
         }
     }
 }
+
 void displayDatafor2D(int **Array, int Rows, int n){
     for (int i = 0 ; i < Rows; i++){
         for (int j = 0; j < n; j++){
@@ -32,15 +43,10 @@ void displayDatafor2D(int **Array, int Rows, int n){
     }
 }
 
-
 void getDatafor3D(int ***Array,int Rows,int Columns,int Mars){
-    cout << "Test";
     for (int i = 0; i < Rows; i++){
-        cout << "Test1";
         for (int j = 0; j < Columns; j++){
-            cout << "Test2";
             for (int z = 0; z < Mars; z++){
-                cout << "Test3";
                 cout << "Enter Value for " << i << j << z << " Index:";
                 cin >> Array[i][j][z];
             }
@@ -57,6 +63,22 @@ void displayDatafor3D(int ***Array,int Rows,int Columns,int Mars){
         }
     }
 }
+
+void findMinimum3D(int ***Array,int Rows,int Columns,int Mars){
+    int temp = Array[0][0][0];
+    for (int i = 0; i < 2; i++){
+        for (int j = 0; j < 2; j++){
+            for (int z = 0; z < 2; z++){
+                cout << Array[i][j][z] << endl;
+                if (temp >= Array[i][j][z]){
+                    temp = Array[i][j][z];
+                }
+            }
+        }
+    }
+    cout << "Smallest Number:" << temp << endl;
+}
+
 int main() {
     int Size1;
     int Rows2, Columns2;
@@ -98,12 +120,12 @@ int main() {
     cout << "\n\n\t\t\t4. Show Data for 2D Array";
     cout << "\n\n\t\t\t5. Enter Data for 3D Array";
     cout << "\n\n\t\t\t6. Show Data for 3D Array";
+    cout << "\n\n\t\t\t7. Find Minimum Value for 1D Array";
+    cout << "\n\n\t\t\t8. Find Minimum Value for 3D Array";
     cout << "\n\n\t\t\t0. Exit";
     cin >> userChoice;
         switch (userChoice) {
             case 1:
-                cout << "Enter Size for 1D Array";
-                cin >> Size1;
                 getDatafor1D(oneArray, Size1);
                 break;
             case 2:
@@ -121,6 +143,12 @@ int main() {
             case 6:
                 displayDatafor3D(threeArray, Rows3, Columns3, Mar3);
                 break;
+            case 7:
+                findMinimum1D(oneArray, Size1);
+                break;
+            case 8:
+                findMinimum3D(threeArray, Rows3, Columns3, Mar3);
+                break;
             case 0:
                 exit(0);
             default:
@@ -131,3 +159,4 @@ int main() {
 
     return 0;
 }
+
