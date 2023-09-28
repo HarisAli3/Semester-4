@@ -120,11 +120,11 @@ void binarySearch(){
         else if (array[mid] < value){
             first = mid + 1;
         } else {
-            last = first + 1;
+            last = mid + 1;
         }
     }
     cout << index;
-    if (!found) {
+    if (found) {
         cout << "Value Found At Index:" << index << endl;
     }
 }
