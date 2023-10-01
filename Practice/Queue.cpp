@@ -5,46 +5,70 @@
 #include <iostream>
 using namespace std;
 
-const int n = 5;
-int First = -1;
-int Rear = -1;
-int Array[n];
+void insertion(int Array[], int n, int &First, int &Rear) {
+    int X;
+    cout << "Enter Value to Enter";
+    cin >> X;
 
-void Insert(int X){
-        if (Rear > n - 1){
-            cout << "Queue OverFlow" << endl;
-        } else {
-            Array[++Rear] = X;
+    if (Rear >= n - 1){
+        cout << "Queue OverFlow" << endl;
+    } else {
+        Array[++Rear] = X;
     }
+
 }
 
-void Delete(){
+void deletion(int Array[], int n, int &First, int &Rear) {
     if (First == Rear){
         cout << "Queue UnderFlow" << endl;
     } else {
         First++;
     }
 }
-void Display(){
-    for(int i = ++First; i <= Rear; i++){
+
+void display(int Array[],int n, int &First, int &Rear) {
+    for (int i = ++First; i <= Rear; i++) {
         cout << Array[i] << endl;
     }
-    --First;
+    First--;
 }
+
 int main(){
-    Insert(10);
-    Display();
-    Insert(20);
-    Display();
-    Insert(30);
-    Display();
-    Insert(40);
-    Display();
-    Insert(50);
-    Display();
-    Insert(60);
-    Display();
-    Delete();
-    cout << "End" << endl;
-    Display();
+    bool close = false;
+    int choice;
+
+    int size;
+    cout << "Enter Size for Queue:";
+    cin >> size;
+
+    int array[size];
+    int First = -1;
+    int Rear = -1;
+
+    while(!close){
+        cout << "Queue Operations:" << endl;
+        cout << "1: En-Queue (Insertion)" << endl;
+        cout << "2: De-Queue (Deletion)" << endl;
+        cout << "3: Display" << endl;
+        cout << "0: Close Program" << endl;
+        cin >> choice;
+
+        switch (choice){
+            case 1:
+                insertion(array, size, First, Rear);
+                break;
+            case 2:
+                deletion(array, size, First, Rear);
+                break;
+            case 3:
+                display(array, size, First, Rear);
+                break;
+            case 0:
+                close = true;
+                break;
+
+        }
+    }
+    return 0;
+
 }
