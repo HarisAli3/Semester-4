@@ -49,6 +49,7 @@ int main(){
         cout << "1: En-Queue (Insertion)" << endl;
         cout << "2: De-Queue (Deletion)" << endl;
         cout << "3: Display" << endl;
+        cout << "4: Show First and Rear Value" << endl;
         cout << "0: Close Program" << endl;
         cin >> choice;
 
@@ -61,6 +62,10 @@ int main(){
                 break;
             case 3:
                 display(array, size, First, Rear);
+                break;
+            case 4:
+                cout << "First:" << First << endl;
+                cout << "Rear" << Rear << endl;
                 break;
             case 0:
                 close = true;
