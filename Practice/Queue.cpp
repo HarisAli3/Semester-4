@@ -11,7 +11,8 @@ void insertion(int Array[], int n, int &Rear) {
     cin >> number;
     for (int i = 0 ; i < number; i++){
         if (Rear >= n - 1){
-            cout << "Queue OverFlow" << endl;
+            cout << "Error: Queue OverFlow" << endl;
+            break;
         } else {
             int X;
             cout << "Enter Value to Enter:";
@@ -23,18 +24,23 @@ void insertion(int Array[], int n, int &Rear) {
 
 void deletion(int &First, int &Rear) {
     if (First == Rear){
-        cout << "Queue UnderFlow" << endl;
+        cout << "Error: Queue UnderFlow" << endl;
     } else {
         First++;
     }
 }
 
 void display(int Array[], int &First, int &Rear) {
-
-    for (int i = ++First; i <= Rear; i++) {
-        cout << Array[i] << endl;
+    if (First == Rear){
+        cout << endl << "Error: Queue UnderFlow" << endl;
+    } else {
+        cout << "Array: ";
+        for (int i = ++First; i <= Rear; i++) {
+            cout << Array[i] << ", ";
+        }
+        cout << endl;
+        First--;
     }
-    First--;
 }
 
 int main(){
@@ -51,14 +57,15 @@ int main(){
     int choice;
 
     while(!close){
-
+        cout << endl;
         cout << "Queue Operations:" << endl;
         cout << "1: En-Queue (Insertion)" << endl;
         cout << "2: De-Queue (Deletion)" << endl;
         cout << "3: Display" << endl;
         cout << "4: Show First and Rear Value" << endl;
         cout << "0: Close Program" << endl;
-        cout << "Choice:";
+
+        cout << endl << "Choice:";
 
         cin >> choice;
 
@@ -83,7 +90,6 @@ int main(){
             default:
                 cout << "You Entered Invalid Option" << endl;
                 break;
-
         }
     }
     return 0;
