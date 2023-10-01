@@ -1,4 +1,4 @@
-// Test
+//
 // Created by haris on 9/30/2023.
 //
 
@@ -15,7 +15,6 @@ void insertion(int Array[], int n, int &First, int &Rear) {
     } else {
         Array[++Rear] = X;
     }
-
 }
 
 void deletion(int Array[], int n, int &First, int &Rear) {
