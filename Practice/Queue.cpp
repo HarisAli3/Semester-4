@@ -63,9 +63,8 @@ int main(){
         cout << "2: De-Queue (Deletion)" << endl;
         cout << "3: Display" << endl;
         cout << "4: Show First and Rear Value" << endl;
-        cout << "0: Close Program" << endl;
-
-        cout << endl << "Choice:";
+        cout << "0: Close Program" << endl << endl;
+        cout << "Choice:";
 
         cin >> choice;
 
