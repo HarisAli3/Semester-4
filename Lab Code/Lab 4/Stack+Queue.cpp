@@ -24,7 +24,6 @@ void pop(int STACK[], int n, int &TOP){
         cout << STACK[TOP] << endl;
         TOP--;
     }
-
 }
 void displayStack(int STACK[], int &TOP){
     if (TOP == -1) {
@@ -69,7 +68,7 @@ void displayQueue(int Queue[], int &Front, int &Rear, int size){
 
 int main(){
 
-    int sizeStack = -1;
+    int sizeStack = -1; // n
     int TOP = -1;
     cout << "Enter Size for STACK:";
     cin >> sizeStack;
