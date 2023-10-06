@@ -7,21 +7,20 @@ using namespace std;
 
 int STACK[10], top = -1;
 
-void Display(){
+void Display() {
     if (top == -1){
         cout << "Stack OverFlow" << endl;
     } else {
-        for (int i = top; i > ; i++){
-            cout << STACK
+        for (int i = top; i > top; i++){
+            cout << STACK << endl;
         }
     }
 }
+
 int main(){
     ++top;
     STACK[top] = 10;
     if (top == - 1){
         cout << "Stack OverFlow" << endl;
     }
-
 }
-

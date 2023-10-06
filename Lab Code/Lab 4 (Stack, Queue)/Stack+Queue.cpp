@@ -9,9 +9,8 @@ void push(int STACK[], int n, int &TOP){
     int Value;
     cout<< "Enter Value to Insert:";
     cin >> Value;
-    if (TOP == n-1){
+    if (TOP == n - 1){
         cout << "Stack OverFlow" << endl;
-
     } else {
         TOP++;
         STACK[TOP] = Value;
@@ -33,7 +32,6 @@ void displayStack(int STACK[], int &TOP){
             cout << STACK[i] << ", ";
         }
     }
-
 }
 
 void EnQueue(int Queue[], int &Front, int &Rear, int size){
@@ -47,6 +45,7 @@ void EnQueue(int Queue[], int &Front, int &Rear, int size){
         Queue[Rear] = Value;
     }
 }
+
 void DeQueue(int &Front, int &Rear){
     if (Front == Rear){
         cout << "Queue UnderFlow" << endl;
@@ -54,13 +53,13 @@ void DeQueue(int &Front, int &Rear){
         Front++;
     }
 }
+
 void displayQueue(int Queue[], int &Front, int &Rear, int size){
     if (Rear == -1 ){
         cout << "Queue UnderFlow" << endl;
     } else {
         for (int i = ++Front; i <= Rear; i++){
             cout << Queue[i] << "," ;
-
         }
         --Front;
     }

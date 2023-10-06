@@ -25,7 +25,7 @@ void insertion() {
     for (int i = size; i >= index; i--) {
         array[i] = array[i - 1];
     }
-    array[index] = 10;
+    array[index] = value;
     for (int i = 0; i < size; i++) {
         cout << array[i] << endl;
     }
@@ -170,19 +170,24 @@ void merging(){
     for (int j = 0; j < size4; j++){
         cout << array4[j] << ", ";
     }
-
 }
+
 int main(){
+
     bool close = false;
     int choice;
+
     while(!close){
-        cout << "Array Operations:" << endl;
+        
+        cout << "\nArray Operations:" << endl;
         cout << "1: Insertion" << endl;
         cout << "2: Deletion"<< endl;
         cout << "3: Linear Search"<< endl;
         cout << "4: Binary Search"<< endl;
         cout << "5: Merging of 3 Array" << endl;
+        cout << "Choice:";
         cin >> choice;
+
         switch (choice){
             case 1:
                 insertion();
@@ -202,7 +207,9 @@ int main(){
             case 0:
                 close = true;
                 break;
-
+            default:
+                cout << "Invalid Option " << endl;
+                break;
         }
     }
     return 0;
