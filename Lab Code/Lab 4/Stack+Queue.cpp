@@ -37,26 +37,24 @@ void displayStack(int STACK[], int &TOP){
 
 }
 
-void EnQueue(int Queue[], int &Front, int &Rear){
+void EnQueue(int Queue[], int &Front, int &Rear, int size){
     int Value;
     cout << "Enter Value to Insert:";
     cin >> Value;
-    if (Front == Rear){
+    if (Rear >= size - 1){
         cout << "Queue OverFlow" << endl;
     } else {
         Rear++;
         Queue[Rear] = Value;
     }
 }
-
-void DeQueue(int Queue[], int &Front){
-    if (Front == -1){
+void DeQueue(int &Front, int &Rear){
+    if (Front == Rear){
         cout << "Queue UnderFlow" << endl;
     } else {
         Front++;
     }
 }
-
 void displayQueue(int Queue[], int &Front, int &Rear, int size){
     if (Rear == -1 ){
         cout << "Queue UnderFlow" << endl;
@@ -68,6 +66,7 @@ void displayQueue(int Queue[], int &Front, int &Rear, int size){
         --Front;
     }
 }
+
 int main(){
 
     int sizeStack = -1;
@@ -75,6 +74,7 @@ int main(){
     cout << "Enter Size for STACK:";
     cin >> sizeStack;
     int STACK[sizeStack];
+
 
     int sizeQueue;
     cout << "Enter Size for Queue:";
@@ -109,10 +109,10 @@ int main(){
                 displayStack(STACK, TOP);
                 break;
             case 4:
-                EnQueue(Queue, Front, Rear);
+                EnQueue(Queue, Front, Rear, sizeQueue);
                 break;
             case 5:
-                DeQueue(Queue, Front);
+                DeQueue(Front, Rear);
                 break;
             case 6:
                 displayQueue(Queue, Front, Rear, sizeQueue);
