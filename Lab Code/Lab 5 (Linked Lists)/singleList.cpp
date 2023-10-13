@@ -69,6 +69,26 @@ void addbySearch(int X){
     }
 }
 
+void deleteNode(int X){
+
+    Node *list = head;
+    Node *temp;
+
+    while (list){
+        if (list->data == X) {
+
+            Node *y = list->next;
+            temp;
+
+            list->next = y;
+            break;
+        }
+        list = list->next;
+    }
+    temp = list->next;
+
+}
+
 void display(){
     Node *list = head;
     cout << "Value: ";
@@ -91,7 +111,8 @@ int main(){
         cout << "1: Insertion (Old Method)" << endl;
         cout << "2: Insertion (Front Method)" << endl;
         cout << "3: Insertion (Search)" << endl;
-        cout << "4: Display" << endl;
+        cout << "4: Delete (Search)" << endl;
+        cout << "5: Display" << endl;
         cout << "0: Exit" << endl;
         cout << "Enter Choice:";
         cin >> choice;
@@ -121,6 +142,12 @@ int main(){
                 addbySearch(search);
                 break;
             case 4:
+                int deleteValue;
+                cout << "Enter Value to Search:";
+                cin >> search;
+                deleteNode(deleteValue);
+                break;
+            case 5:
                 display();
                 break;
             case 0:
