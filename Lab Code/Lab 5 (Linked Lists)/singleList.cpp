@@ -1,8 +1,6 @@
 //
 // Created by 70131147 on 10/13/2023.
 //
-// structure , at end of list
-// display
 
 #include <iostream>
 using namespace std;
@@ -12,7 +10,7 @@ struct Node{
     int data;
     Node* next;
 };
-    Node* head;
+    Node *head;
     Node *tail;
 
 void insert(int X){
@@ -28,9 +26,9 @@ void insert(int X){
         newNode->next = nullptr;
 
         Node *list = head;
+
         while (list ){
             if (list->next == nullptr){
-
                 list->next = newNode;
                 tail = newNode;
                 break;
@@ -46,11 +44,11 @@ void addFront(int X){
     head = newNode;
 }
 
-void addbySearch(int X){
+void addbySearch(int X) {
     int value;
     Node *list = head;
     Node *newNode = new Node;
-    while (list){
+    while (list) {
         if (list->data == X) {
 
             cout << "Enter Value to Enter:";
@@ -69,29 +67,33 @@ void addbySearch(int X){
     }
 }
 
-void deleteNode(int X){
-
+void deleteNode(int X) {
     Node *list = head;
-    Node *temp;
+    Node *prev = nullptr; // Pointer to the previous node
 
-    while (list){
+    while (list) {
         if (list->data == X) {
-
-            Node *y = list->next;
-            temp;
-
-            list->next = y;
-            break;
+            // Found the node to delete
+            if (prev == nullptr) {
+                // If the node to delete is the head node
+                head = list->next;
+            } else {
+                // If the node to delete is not the head node
+                prev->next = list->next;
+            }
+            delete list; // Deallocate the memory of the node
+            return; // Exit the function after deleting the node
         }
+        prev = list;
         list = list->next;
     }
-    temp = list->next;
 
+    cout << "Node with value " << X << " not found in the list." << endl;
 }
 
 void display(){
     Node *list = head;
-    cout << "Value: ";
+    cout << "Linked List Values: ";
     while (list){
         cout << list->data << ", ";
         list = list->next;
@@ -144,7 +146,7 @@ int main(){
             case 4:
                 int deleteValue;
                 cout << "Enter Value to Search:";
-                cin >> search;
+                cin >> deleteValue;
                 deleteNode(deleteValue);
                 break;
             case 5:
@@ -157,6 +159,7 @@ int main(){
                 cout << "Invalid Option" << endl;
                 break;
         }
+        cout << endl;
     }
 
 }
