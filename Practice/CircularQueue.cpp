@@ -15,7 +15,7 @@ int isEmpty() {
 }
 
 void enQueue(int element) {
-    if (isFull()) printf("\n Queue is full!! \n");
+    if (isFull() != 0) printf("\n Queue is full!! \n");
     else {
         if (front == -1)
             front = 0;
@@ -27,7 +27,7 @@ void enQueue(int element) {
 
 int deQueue() {
     int element;
-    if (isEmpty()) {
+    if (isEmpty() != 0) {
         printf("\n Queue is empty !! \n");
         return (-1);
     }
@@ -50,7 +50,7 @@ int deQueue() {
 
 void display() {
     int i;
-    if (isEmpty())
+    if (isEmpty() != 0)
         printf(" \n Empty Queue\n");
     else{
         printf("\n Front -> %d ", front);
