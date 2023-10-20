@@ -51,25 +51,37 @@ void merge_list(Node **list1, Node **list2, Node **list3){
 
     Node *temp1 = *list1;
     Node *temp2 = *list2;
-
-    while (temp1 != nullptr && temp2 != nullptr){
-        if (temp1->data > temp2->data){
+    if (temp1 == nullptr){
+        while (temp2){
             insert_end(list3, temp2->data);
             temp2 = temp2->next;
-        } else {
+        }
+    } else if (temp2 == nullptr){
+        while (temp1){
             insert_end(list3, temp1->data);
             temp1 = temp1->next;
         }
-    }
+    } else {
+        while (temp1 != nullptr && temp2 != nullptr){
 
-    while(temp1 == nullptr && temp2 != nullptr){
-        insert_end(list3, temp2->data);
-        temp2 = temp2->next;
-    }
+            if (temp1->data > temp2->data){
+                insert_end(list3, temp2->data);
+                temp2 = temp2->next;
+            } else {
+                insert_end(list3, temp1->data);
+                temp1 = temp1->next;
+            }
+        }
 
-    while(temp1 != nullptr && temp2 == nullptr){
-        insert_end(list3, temp1->data);
-        temp1 = temp1->next;
+        while(temp1 == nullptr && temp2 != nullptr){
+            insert_end(list3, temp2->data);
+            temp2 = temp2->next;
+        }
+
+        while(temp1 != nullptr && temp2 == nullptr){
+            insert_end(list3, temp1->data);
+            temp1 = temp1->next;
+        }
     }
 }
 
