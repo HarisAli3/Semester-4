@@ -12,6 +12,7 @@ struct Node {
 };
 
 void insert_end(Node **head, int newData){
+
     Node *newNode = new Node;
     newNode->data = newData;
     newNode->prev = *head;
@@ -31,13 +32,19 @@ void insert_end(Node **head, int newData){
 
 void display(Node **head){
     Node *list = *head;
-    while (list){
-        cout << "Data: " << list->data << endl;
-        list = list->next;
+    if (*head == nullptr){
+        cout << "Empty List" << endl;
+    } else {
+        while (list){
+            cout << "Data: " << list->data << endl;
+            list = list->next;
+        }
     }
 }
 int main(){
+
     Node *list1 = nullptr;
+    display(&list1);
     insert_end(&list1, 2);
     insert_end(&list1, 5);
     insert_end(&list1, 8);
