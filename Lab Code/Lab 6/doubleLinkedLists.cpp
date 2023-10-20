@@ -51,44 +51,31 @@ void merge_list(Node **list1, Node **list2, Node **list3){
 
     Node *temp1 = *list1;
     Node *temp2 = *list2;
-    if (temp1 == nullptr){
-        while (temp2){
+
+    while (temp1 != nullptr && temp2 != nullptr){
+        if (temp1->data > temp2->data){
             insert_end(list3, temp2->data);
             temp2 = temp2->next;
-        }
-    } else if (temp2 == nullptr){
-        while (temp1){
+        } else {
             insert_end(list3, temp1->data);
             temp1 = temp1->next;
         }
-    } else {
-        while (temp1 != nullptr && temp2 != nullptr){
+    }
 
-            if (temp1->data > temp2->data){
-                insert_end(list3, temp2->data);
-                temp2 = temp2->next;
-            } else {
-                insert_end(list3, temp1->data);
-                temp1 = temp1->next;
-            }
-        }
+    while(temp1 == nullptr && temp2 != nullptr){
+        insert_end(list3, temp2->data);
+        temp2 = temp2->next;
+    }
 
-        while(temp1 == nullptr && temp2 != nullptr){
-            insert_end(list3, temp2->data);
-            temp2 = temp2->next;
-        }
-
-        while(temp1 != nullptr && temp2 == nullptr){
-            insert_end(list3, temp1->data);
-            temp1 = temp1->next;
-        }
+    while(temp1 != nullptr && temp2 == nullptr){
+        insert_end(list3, temp1->data);
+        temp1 = temp1->next;
     }
 }
 
 int main(){
 
     Node *list1 = nullptr;
-    display(&list1);
     insert_end(&list1, 2);
     insert_end(&list1, 5);
     insert_end(&list1, 8);
@@ -100,7 +87,7 @@ int main(){
     insert_end(&list2, 1);
     insert_end(&list2, 6);
     insert_end(&list2, 10);
-//    insert_end(&list2, 13);
+    insert_end(&list2, 13);
     cout << "Double Linked List 2:" << endl;
     display(&list2);
 
