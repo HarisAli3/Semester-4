@@ -27,7 +27,7 @@ void insert(int X){
 
         Node *list = head;
 
-        while (list != nullptr ){
+        while (list ){
             if (list->next == nullptr){
                 list->next = newNode;
                 tail = newNode;
@@ -48,7 +48,7 @@ void addbySearch(int X) {
     int value;
     Node *list = head;
     Node *newNode = new Node;
-    while (list != nullptr) {
+    while (list) {
         if (list->data == X) {
 
             cout << "Enter Value to Enter:";
@@ -71,7 +71,7 @@ void deleteNode(int X) {
     Node *list = head;
     Node *prev = nullptr; // Pointer to the previous node
 
-    while (list != nullptr) {
+    while (list) {
         if (list->data == X) {
             // Found the node to delete
             if (prev == nullptr) {
@@ -94,7 +94,7 @@ void deleteNode(int X) {
 void display(){
     Node *list = head;
     cout << "Linked List Values: ";
-    while (list != nullptr){
+    while (list){
         cout << list->data << ", ";
         list = list->next;
     }
@@ -161,5 +161,4 @@ int main(){
         }
         cout << endl;
     }
-
 }
