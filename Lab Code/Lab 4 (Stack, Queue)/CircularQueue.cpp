@@ -51,7 +51,7 @@ void display(){
     }
 }
 int main(){
-//    DeQueue();
+    DeQueue();
     EnQueue(10);
     display();
     EnQueue(20);

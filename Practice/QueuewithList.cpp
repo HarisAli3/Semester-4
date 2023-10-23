@@ -1,8 +1,3 @@
-
-//
-// Created by haris on 10/21/2023.
-//
-
 #include <iostream>
 using namespace std;
 
@@ -19,8 +14,8 @@ void enQueue(Queue **front, Queue **rear, float newData){
     newNode->next = nullptr;
 
     if (*rear == nullptr){
-        *front = newNode;
         *rear = newNode;
+        *front = newNode;
     } else {
         (*rear)->next = newNode;
         *rear = newNode;
@@ -30,16 +25,17 @@ void enQueue(Queue **front, Queue **rear, float newData){
 void deQueue(Queue **front, Queue **rear){
 
     if (*front == nullptr){
-        *rear = nullptr;
         cout << "Queue UnderFlow" << endl;
-        return;
-    }
-
+    } else {
     Queue *temp = *front;
-
-    cout<<"The deleted element is "<< (*front)->data <<endl;
     *front = (*front)->next;
+
+    if (*front == nullptr) {
+        *rear = nullptr;
+    }
+    cout<<"The deleted element is "<< temp->data <<endl;
     delete temp;
+    }
 }
 
 void display(Queue** front, Queue** rear) {
@@ -67,9 +63,10 @@ int main(){
     int choice;
     bool close = false;
 
+    cout << "Queue with Single Linked List" << endl;
+
     while (!close){
 
-        cout << "Queue with Single Linked List" << endl;
         cout << "Operations:" << endl;
         cout << "1. EnQueue " << endl;
         cout << "2. DeQueue " << endl;
@@ -101,8 +98,8 @@ int main(){
                 cout << "Invalid Option" << endl;
                 break;
         }
+        cout << endl;
     }
-
     return 0;
 }
 

@@ -12,8 +12,7 @@ void push(int STACK[], int n, int &TOP){
     if (TOP == n - 1){
         cout << "Stack OverFlow" << endl;
     } else {
-        TOP++;
-        STACK[TOP] = Value;
+        STACK[++TOP] = Value;
     }
 }
 void pop(int STACK[], int n, int &TOP){
@@ -21,7 +20,7 @@ void pop(int STACK[], int n, int &TOP){
         cout << "STACK UnderFlow" << endl;
     } else {
         cout << STACK[TOP] << endl;
-        TOP--;
+        --TOP;
     }
 }
 void displayStack(int STACK[], int &TOP){

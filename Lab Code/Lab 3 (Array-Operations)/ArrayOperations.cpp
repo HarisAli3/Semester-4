@@ -82,6 +82,7 @@ void linearSearch() {
         if (array[i] == value){
             found = true;
             index = i;
+            break;
         }
     }
     if (found){
@@ -120,7 +121,7 @@ void binarySearch(){
         else if (array[mid] < value){
             first = mid + 1;
         } else {
-            last = mid + 1;
+            last = mid - 1;
         }
     }
     cout << index;

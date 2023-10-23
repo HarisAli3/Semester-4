@@ -1,7 +1,3 @@
-//
-// Created by HarisAli on 10/21/2023.
-//
-
 #include <iostream>
 using namespace std;
 
@@ -54,36 +50,31 @@ int main(){
     int choice;
     bool close = false;
 
+    cout << "Stack with Linked List" << endl;
+
     while (!close){
 
-        cout << "----------------------" << endl;
-        cout << "Stack with Linked List" << endl;
         cout << "Operations:" << endl;
         cout << "1. Insertion (push)" << endl;
         cout << "2. Deletion (pop)" << endl;
         cout << "3. Display" << endl;
         cout << "0. Close" << endl;
-        cout << "----------------------" << endl;
         cout << "Enter Choice:";
         cin >> choice;
-        cout << endl;
 
         switch(choice){
 
             case 1:
                 int value;
-                cout << "Enter Value to Enter:";
+                cout << "Enter Value to Insert:";
                 cin >> value;
                 push(&top, value);
-                cout << endl;
                 break;
             case 2:
                 pop(&top);
-                cout << endl;
                 break;
             case 3:
                 display(&top);
-                cout << endl;
                 break;
             case 0:
                 close = true;
@@ -94,6 +85,7 @@ int main(){
                 cout << "Invalid Option" << endl;
                 break;
         }
+        cout << endl;
     }
 }
 
