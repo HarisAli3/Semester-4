@@ -1,4 +1,5 @@
 #include <iostream>
+
 using namespace std;
 
 void insertion() {
@@ -18,7 +19,7 @@ void insertion() {
     cout << "Enter Position for Value:";
     cin >> index;
     cout << "Before Insertion:" << endl;
-    for (int i = 0 ; i < size; i++){
+    for (int i = 0; i < size; i++) {
         cout << "Index " << i << ": " << array[i] << endl;
     }
     size++;
@@ -30,6 +31,7 @@ void insertion() {
         cout << array[i] << endl;
     }
 }
+
 void deletion() {
     int size;
     cout << "Enter Size for Array:";
@@ -56,6 +58,7 @@ void deletion() {
         cout << array[i] << ", ";
     }
 }
+
 void linearSearch() {
     int size;
     cout << "Enter Size for Array:";
@@ -66,11 +69,11 @@ void linearSearch() {
         cout << "At Index " << i << ":";
         cin >> array[i];
     }
-    for (int i = 0 ; i < size; i++){
+    for (int i = 0; i < size; i++) {
         cout << "Value for Index " << i << ":";
         cin >> array[i];
     }
-    for (int i = 0; i < size ; i++){
+    for (int i = 0; i < size; i++) {
         cout << "Index " << i << ": " << array[i] << endl;
     }
     bool found = false;
@@ -78,20 +81,21 @@ void linearSearch() {
     int value;
     cout << "Enter Value you want to Find:";
     cin >> value;
-    for (int i = 0; i < size; i++){
-        if (array[i] == value){
+    for (int i = 0; i < size; i++) {
+        if (array[i] == value) {
             found = true;
             index = i;
             break;
         }
     }
-    if (found){
+    if (found) {
         cout << "Value found at Index:" << index << endl;
     } else {
         cout << "Not Found";
     }
 }
-void binarySearch(){
+
+void binarySearch() {
     int size;
     cout << "Enter Size for Array:";
     cin >> size;
@@ -102,7 +106,7 @@ void binarySearch(){
         cin >> array[i];
     }
     int first = 0, last = size - 1, mid;
-    for (int i = 0; i < size ; i++){
+    for (int i = 0; i < size; i++) {
         cout << "Index " << i << ": " << array[i] << endl;
     }
     int value;
@@ -110,15 +114,14 @@ void binarySearch(){
     cin >> value;
     bool found = false;
     int index = -1;
-    while (last >= first){
+    while (last >= first) {
         mid = (first + last) / 2;
         cout << "Mid:" << mid << endl;
-        if (value == array[mid]){
+        if (value == array[mid]) {
             found = true;
             index = mid;
             break;
-        }
-        else if (array[mid] < value){
+        } else if (array[mid] < value) {
             first = mid + 1;
         } else {
             last = mid - 1;
@@ -129,67 +132,68 @@ void binarySearch(){
         cout << "Value Found At Index:" << index << endl;
     }
 }
-void merging(){
+
+void merging() {
     int size1, size2, size3;
     cout << "Enter Size for Array 1:";
     cin >> size1;
     int array1[size1];
-    for (int i = 0 ; i < size1; i++){
+    for (int i = 0; i < size1; i++) {
         cout << "For Index " << i << ":";
         cin >> array1[i];
     }
     cout << "Enter Size for Array 2:";
     cin >> size2;
     int array2[size2];
-    for (int i = 0 ; i < size2; i++){
+    for (int i = 0; i < size2; i++) {
         cout << "For Index " << i << ":";
         cin >> array2[i];
     }
     cout << "Enter Size for Array 3:";
     cin >> size3;
     int array3[size3];
-    for (int i = 0 ; i < size3; i++){
+    for (int i = 0; i < size3; i++) {
         cout << "For Index " << i << ":";
         cin >> array3[i];
     }
     int size4 = size1 + size2 + size3;
     int array4[size4];
     int i;
-    for (i = 0 ; i < size1; i++){
+    for (i = 0; i < size1; i++) {
         array4[i] = array1[i];
     }
     int k = i;
-    for (i = 0 ; i < size2; i++){
+    for (i = 0; i < size2; i++) {
         array4[k] = array2[i];
         k++;
     }
-    for (i = 0; i < size3; i++){
+    for (i = 0; i < size3; i++) {
         array4[k] = array3[i];
         k++;
     }
     cout << "After Merging: ";
-    for (int j = 0; j < size4; j++){
+    for (int j = 0; j < size4; j++) {
         cout << array4[j] << ", ";
     }
 }
 
-int main(){
+int main() {
 
     bool close = false;
     int choice;
 
-    while(!close){
-        
+    while (!close) {
+
         cout << "\nArray Operations:" << endl;
         cout << "1: Insertion" << endl;
-        cout << "2: Deletion"<< endl;
-        cout << "3: Linear Search"<< endl;
-        cout << "4: Binary Search"<< endl;
+        cout << "2: Deletion" << endl;
+        cout << "3: Linear Search" << endl;
+        cout << "4: Binary Search" << endl;
         cout << "5: Merging of 3 Array" << endl;
         cout << "Choice:";
         cin >> choice;
 
-        switch (choice){
+        switch (choice) {
             case 1:
                 insertion();
                 break;

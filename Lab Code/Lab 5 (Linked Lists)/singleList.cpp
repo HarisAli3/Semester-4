@@ -3,32 +3,32 @@
 //
 
 #include <iostream>
+
 using namespace std;
 
 
-struct Node{
+struct Node {
     int data;
-    Node* next;
+    Node *next;
 };
-    Node *head;
-    Node *tail;
+Node *head;
+Node *tail;
 
-void insert(int X){
+void insert(int X) {
 
     if (head == nullptr) {
         head = new Node;
         head->data = X;
         head->next = nullptr;
-    }
-    else {
-        Node* newNode = new Node;
+    } else {
+        Node *newNode = new Node;
         newNode->data = X;
         newNode->next = nullptr;
 
         Node *list = head;
 
-        while (list){
-            if (list->next == nullptr){
+        while (list) {
+            if (list->next == nullptr) {
                 list->next = newNode;
                 tail = newNode;
                 break;
@@ -37,7 +37,8 @@ void insert(int X){
         }
     }
 }
-void addFront(int X){
+
+void addFront(int X) {
     Node *newNode = new Node;
     newNode->data = X;
     newNode->next = head;
@@ -91,24 +92,24 @@ void deleteNode(int X) {
     cout << "Node with value " << X << " not found in the list." << endl;
 }
 
-void display(){
+void display() {
     Node *list = head;
     cout << "Linked List Values: ";
-    while (list){
+    while (list) {
         cout << list->data << ", ";
         list = list->next;
     }
     cout << endl;
 }
 
-int main(){
+int main() {
 
     bool close = false;
     int choice;
 
     int num;
     int value;
-    while (!close){
+    while (!close) {
         cout << "Single Linked List Operations:" << endl;
         cout << "1: Insertion (Old Method)" << endl;
         cout << "2: Insertion (Front Method)" << endl;
@@ -122,7 +123,7 @@ int main(){
             case 1:
                 cout << "How many value you want to enter:";
                 cin >> num;
-                for (int i = 0; i < num; i++){
+                for (int i = 0; i < num; i++) {
                     cout << "Enter Value:";
                     cin >> value;
                     insert(value);
@@ -131,7 +132,7 @@ int main(){
             case 2:
                 cout << "How many value you want to enter:";
                 cin >> num;
-                for (int i = 0; i < num; i++){
+                for (int i = 0; i < num; i++) {
                     cout << "Enter Value:";
                     cin >> value;
                     addFront(value);
