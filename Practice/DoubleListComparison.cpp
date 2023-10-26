@@ -1,7 +1,3 @@
-//
-// Created by haris on 10/22/2023.
-//
-
 #include <iostream>
 using namespace std;
 
@@ -62,9 +58,9 @@ void sizeComparison(Node **list1, Node **list2){
     }
 
     if (count1 == count2){
-        cout << "Both Lists are Equal" << endl;
+        cout << "Size: Both Lists are Equal" << endl;
     } else {
-        cout << "They are not equal" << endl;
+        cout << "Size: They are not equal" << endl;
     }
 }
 void valuesComparison(Node **list1, Node **list2){
@@ -75,7 +71,7 @@ void valuesComparison(Node **list1, Node **list2){
 
     while (temp1 && temp2){
         if (temp1->data != temp2->data){
-            cout << "They are not equal" << endl;
+            cout << "Values Comparison: They are not equal" << endl;
             equal = false;
             break;
         }
@@ -84,7 +80,7 @@ void valuesComparison(Node **list1, Node **list2){
     }
 
     if (equal){
-        cout << "Both Lists are Equal" << endl;
+        cout << "Values Comparison: Both Lists are Equal" << endl;
     }
 }
 
@@ -95,13 +91,20 @@ int main(){
     insert(&list1, 10);
     insert(&list1, 20);
     insert(&list1, 30);
+
+    cout << "Doubly List 1: ";
     display(&list1);
+
     insert(&list2, 10);
     insert(&list2, 20);
     insert(&list2, 40);
+
+    cout << "Doubly List 2: ";
     display(&list2);
 
+    cout << endl;
     sizeComparison(&list1, &list2);
+    cout << endl;
     valuesComparison(&list1, &list2);
 
 }

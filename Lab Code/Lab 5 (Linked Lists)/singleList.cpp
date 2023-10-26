@@ -27,7 +27,7 @@ void insert(int X){
 
         Node *list = head;
 
-        while (list ){
+        while (list){
             if (list->next == nullptr){
                 list->next = newNode;
                 tail = newNode;
