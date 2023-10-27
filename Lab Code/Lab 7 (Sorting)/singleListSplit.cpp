@@ -3,32 +3,32 @@
 //
 
 #include <iostream>
+
 using namespace std;
 
-struct Node{
+struct Node {
     int data;
-    Node* next;
+    Node *next;
 };
 
-Node* list1;
-Node* list2;
+Node *list1;
+Node *list2;
 
-void insert(int X){
+void insert(int X) {
 
     if (list1 == nullptr) {
         list1 = new Node;
         list1->data = X;
         list1->next = nullptr;
-    }
-    else {
-        Node* newNode = new Node;
+    } else {
+        Node *newNode = new Node;
         newNode->data = X;
         newNode->next = nullptr;
 
         Node *list = list1;
 
-        while (list != nullptr ){
-            if (list->next == nullptr){
+        while (list != nullptr) {
+            if (list->next == nullptr) {
                 list->next = newNode;
                 break;
             }
@@ -37,12 +37,12 @@ void insert(int X){
     }
 }
 
-void split(int X){
+void split(int X) {
 
     Node *temp1 = list1;
 
-    while (temp1){
-        if (temp1->data == X){
+    while (temp1) {
+        if (temp1->data == X) {
             cout << "Value Found:" << X << endl;
 
             list2 = temp1->next;
@@ -55,25 +55,40 @@ void split(int X){
     }
 }
 
-void display(){
+void display() {
     Node *temp = list1;
-    cout << endl << "List 1: ";
-    while (temp != nullptr){
-        cout << temp->data << ",";
+    cout << "List 1 : ";
+    if (list1 == nullptr){
+        cout << "List is Empty " << endl;
+        return;
+    }
+    while (temp != nullptr) {
+        cout << temp->data;
+        if (temp->next != nullptr) {
+            cout << " , ";
+        }
         temp = temp->next;
     }
     cout << endl;
 }
-void display2(){
+
+void display2() {
     Node *temp = list2;
-    cout << endl << "List 2: ";
-    while (temp != nullptr){
-        cout << temp->data << ",";
+    cout  << "List 2 : ";
+    if (temp == nullptr){
+        cout << "List is Empty " << endl;
+        return;
+    }
+    while (temp != nullptr) {
+        cout << temp->data;
+        if (temp->next != nullptr) {
+            cout << " , ";
+        }
         temp = temp->next;
     }
 }
 
-int main(){
+int main() {
     insert(5);
     insert(3);
     insert(10);
@@ -84,7 +99,7 @@ int main(){
     insert(11);
     insert(12);
     display();
-    split(0);
+    split(12);
     display();
     display2();
 
