@@ -3,6 +3,7 @@
 //
 
 #include <iostream>
+
 using namespace std;
 
 struct Node {
@@ -11,21 +12,21 @@ struct Node {
     Node *next;
 };
 
-void insert_end(Node **head, int newData){
+void insert_end(Node **head, int newData) {
 
     Node *newNode = new Node;
     newNode->data = newData;
     newNode->prev = *head;
     newNode->next = nullptr;
 
-    if (*head == nullptr){
+    if (*head == nullptr) {
         *head = newNode;
         newNode->prev = nullptr;
         return;
     }
     Node *temp = *head;
 
-    while (temp->next != nullptr){
+    while (temp->next != nullptr) {
         temp = temp->next;
     }
 
@@ -34,26 +35,26 @@ void insert_end(Node **head, int newData){
 
 }
 
-void display(Node **head){
+void display(Node **head) {
     Node *list = *head;
 
-    if (*head == nullptr){
+    if (*head == nullptr) {
         cout << "Empty List" << endl;
         return;
     }
-    while (list != nullptr){
+    while (list != nullptr) {
         cout << "Data: " << list->data << endl;
         list = list->next;
     }
 }
 
-void merge_list(Node **list1, Node **list2, Node **list3){
+void merge_list(Node **list1, Node **list2, Node **list3) {
 
     Node *temp1 = *list1;
     Node *temp2 = *list2;
 
-    while (temp1 != nullptr && temp2 != nullptr){
-        if (temp1->data > temp2->data){
+    while (temp1 != nullptr && temp2 != nullptr) {
+        if (temp1->data > temp2->data) {
             insert_end(list3, temp2->data);
             temp2 = temp2->next;
         } else {
@@ -62,18 +63,18 @@ void merge_list(Node **list1, Node **list2, Node **list3){
         }
     }
 
-    while(temp1 == nullptr && temp2 != nullptr){
+    while (temp1 == nullptr && temp2 != nullptr) {
         insert_end(list3, temp2->data);
         temp2 = temp2->next;
     }
 
-    while(temp1 != nullptr && temp2 == nullptr){
+    while (temp1 != nullptr && temp2 == nullptr) {
         insert_end(list3, temp1->data);
         temp1 = temp1->next;
     }
 }
 
-int main(){
+int main() {
 
     Node *list1 = nullptr;
     insert_end(&list1, 2);
