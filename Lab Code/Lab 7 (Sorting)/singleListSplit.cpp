@@ -13,6 +13,7 @@ struct Node {
 
 Node *list1;
 Node *list2;
+Node *list3;
 
 void insert(int X) {
 
@@ -40,13 +41,17 @@ void insert(int X) {
 void split(int X) {
 
     Node *temp1 = list1;
+    list2 = list1;
+//    Node *temp2 = list2;
 
     while (temp1) {
+
         if (temp1->data == X) {
             cout << "Value Found:" << X << endl;
 
-            list2 = temp1->next;
-            temp1->next = nullptr;
+            list3 = temp1->next;
+
+            list2->next = nullptr;
 
             break;
         }
@@ -56,8 +61,9 @@ void split(int X) {
 }
 
 void display() {
+
     Node *temp = list1;
-    cout << "List 1 : ";
+    cout << "Original List: ";
     if (list1 == nullptr){
         cout << "List is Empty " << endl;
         return;
@@ -86,6 +92,23 @@ void display2() {
         }
         temp = temp->next;
     }
+    cout << endl;
+}
+
+void display3() {
+    Node *temp = list3;
+    cout  << "List 3 : ";
+    if (temp == nullptr){
+        cout << "List is Empty " << endl;
+        return;
+    }
+    while (temp != nullptr) {
+        cout << temp->data;
+        if (temp->next != nullptr) {
+            cout << " , ";
+        }
+        temp = temp->next;
+    }
 }
 
 int main() {
@@ -98,9 +121,15 @@ int main() {
     insert(2);
     insert(11);
     insert(12);
+
     display();
-    split(12);
+
+    split(0);
+
     display();
+
     display2();
+
+    display3();
 
 }
