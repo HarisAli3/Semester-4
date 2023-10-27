@@ -87,7 +87,6 @@ int main(){
     insert_end(&list2, 1);
     insert_end(&list2, 6);
     insert_end(&list2, 10);
-    insert_end(&list2, 13);
     cout << "Double Linked List 2:" << endl;
     display(&list2);
 
