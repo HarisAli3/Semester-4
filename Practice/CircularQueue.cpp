@@ -5,10 +5,12 @@
 #include <iostream>
 using namespace std;
 
-#define SIZE 5
+#define SIZE 10
 
-void EnQueue(int Queue[] , int &Front, int &Rear, int Value){
+
+void EnQueue(int Queue[] , int &Front, int &Rear, int Value) {
     if ((Front == Rear + 1) || (Front  == 0 && Rear == SIZE - 1 ) ){
+        cout << Value << " can't be inserted." << endl;
         cout << "Queue OverFlow" << endl;
         return;
     }
@@ -16,11 +18,10 @@ void EnQueue(int Queue[] , int &Front, int &Rear, int Value){
         Front = 0;
     }
     Rear = (Rear + 1) % SIZE;
-    cout << "Rear: " << Rear << endl;
     Queue[Rear] = Value;
 }
 
-void DeQueue(int Queue[] , int &Front, int &Rear){
+void DeQueue(int Queue[] , int &Front, int &Rear) {
     if (Front == -1 ){
         cout << "Queue Empty " << endl;
     } else {
@@ -32,10 +33,9 @@ void DeQueue(int Queue[] , int &Front, int &Rear){
             Front = (Front + 1) % SIZE;
         }
     }
+}
 
-    }
-
-void Display(int Queue[], int Front, int Rear){
+void Display(int Queue[], int Front, int Rear) {
     //Fix this code
     if (Front == -1){
         cout << "Queue UnderFlow" << endl;
@@ -50,13 +50,33 @@ void Display(int Queue[], int Front, int Rear){
     }
 }
 int main(){
+
     int Queue[SIZE];
+
     int Front = - 1, Rear = -1;
+
     EnQueue(Queue, Front, Rear, 10);
     EnQueue(Queue, Front, Rear, 100);
+    EnQueue(Queue, Front, Rear, 200);
+    EnQueue(Queue, Front, Rear, 300);
+    EnQueue(Queue, Front, Rear, 400);
+    EnQueue(Queue, Front, Rear, 500);
+    EnQueue(Queue, Front, Rear, 600);
+    EnQueue(Queue, Front, Rear, 700);
+    EnQueue(Queue, Front, Rear, 800);
+    EnQueue(Queue, Front, Rear, 900);
+    EnQueue(Queue, Front, Rear, 1000);
+
     Display(Queue, Front, Rear);
+
     DeQueue(Queue, Front, Rear);
 
+    Display(Queue, Front, Rear);
+
+    // Output for this code
+    // Queue Elements: 10, 100, 200, 300, 400, 500, 600, 700, 800, 900
+    // Element Deleted: 10
+    // Queue Elements: 100, 200, 300, 400, 500, 600, 700, 800, 900
 
     return 0;
 
