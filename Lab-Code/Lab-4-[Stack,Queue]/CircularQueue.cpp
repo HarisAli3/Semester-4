@@ -7,6 +7,7 @@
 using namespace std;
 
 int Front = -1, Rear = -1;
+
 #define SIZE 5
 int Queue[SIZE];
 

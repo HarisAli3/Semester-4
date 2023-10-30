@@ -7,9 +7,11 @@
 using namespace std;
 
 void push(int STACK[], int n, int &TOP) {
+
     int Value;
     cout << "Enter Value to Insert:";
     cin >> Value;
+
     if (TOP == n - 1) {
         cout << "Stack OverFlow" << endl;
     } else {
@@ -17,11 +19,11 @@ void push(int STACK[], int n, int &TOP) {
     }
 }
 
-void pop(int STACK[], int n, int &TOP) {
+void pop(int STACK[], int &TOP) {
     if (TOP == -1) {
         cout << "STACK UnderFlow" << endl;
     } else {
-        cout << STACK[TOP] << endl;
+        cout << "Popped Value:" << STACK[TOP] << endl;
         --TOP;
     }
 }
@@ -31,20 +33,22 @@ void displayStack(int STACK[], int &TOP) {
         cout << "STACK UnderFlow" << endl;
     } else {
         for (int i = TOP; i >= 0; i--) {
-            cout << STACK[i] << ", ";
+            cout << STACK[i];
+            if (i != 0) {
+                cout << ",";
+            }
         }
     }
 }
 
-void EnQueue(int Queue[], int &Front, int &Rear, int size) {
+void EnQueue(int Queue[], int &Rear, int size) {
     int Value;
     cout << "Enter Value to Insert:";
     cin >> Value;
     if (Rear >= size - 1) {
         cout << "Queue OverFlow" << endl;
     } else {
-        Rear++;
-        Queue[Rear] = Value;
+        Queue[++Rear] = Value;
     }
 }
 
@@ -52,16 +56,20 @@ void DeQueue(int &Front, int &Rear) {
     if (Front == Rear) {
         cout << "Queue UnderFlow" << endl;
     } else {
-        Front++;
+        cout << "De-Queued Value:" << Front << endl;
+        ++Front;
     }
 }
 
-void displayQueue(int Queue[], int &Front, int &Rear, int size) {
+void displayQueue(int Queue[], int &Front, int &Rear) {
     if (Rear == -1) {
         cout << "Queue UnderFlow" << endl;
     } else {
         for (int i = ++Front; i <= Rear; i++) {
-            cout << Queue[i] << ",";
+            cout << Queue[i];
+            if (i != Rear) {
+                cout << ",";
+            }
         }
         --Front;
     }
@@ -87,15 +95,19 @@ int main() {
     bool close = false;
     int choice;
     while (!close) {
+
         cout << "STACK Operations:" << endl;
         cout << "1: Push" << endl;
         cout << "2: Pop" << endl;
         cout << "3: Display" << endl;
+
         cout << "\t\t\t\t\t\t" << endl;
+
         cout << "QUEUE Operations:" << endl;
         cout << "4: En-Queue " << endl;
         cout << "5: De-Queue" << endl;
         cout << "6: Display" << endl;
+
         cout << "Enter Choice:";
         cin >> choice;
         switch (choice) {
@@ -103,19 +115,19 @@ int main() {
                 push(STACK, sizeStack, TOP);
                 break;
             case 2:
-                pop(STACK, sizeStack, TOP);
+                pop(STACK, TOP);
                 break;
             case 3:
                 displayStack(STACK, TOP);
                 break;
             case 4:
-                EnQueue(Queue, Front, Rear, sizeQueue);
+                EnQueue(Queue, Rear, sizeQueue);
                 break;
             case 5:
                 DeQueue(Front, Rear);
                 break;
             case 6:
-                displayQueue(Queue, Front, Rear, sizeQueue);
+                displayQueue(Queue, Front, Rear);
                 break;
             case 0:
                 close = true;
@@ -124,5 +136,6 @@ int main() {
                 cout << "Invalid Option" << endl;
                 break;
         }
+        cout << endl;
     }
 }

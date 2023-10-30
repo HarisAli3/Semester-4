@@ -11,16 +11,20 @@ struct Node {
     int data;
     Node *next;
 };
+
 Node *head;
 Node *tail;
 
 void insert(int X) {
 
     if (head == nullptr) {
+
         head = new Node;
         head->data = X;
         head->next = nullptr;
+
     } else {
+
         Node *newNode = new Node;
         newNode->data = X;
         newNode->next = nullptr;
@@ -39,16 +43,20 @@ void insert(int X) {
 }
 
 void addFront(int X) {
+
     Node *newNode = new Node;
     newNode->data = X;
     newNode->next = head;
     head = newNode;
+
 }
 
-void addbySearch(int X) {
+void addBySearch(int X) {
+
     int value;
     Node *list = head;
     Node *newNode = new Node;
+
     while (list != nullptr) {
         if (list->data == X) {
 
@@ -110,6 +118,7 @@ int main() {
     int num;
     int value;
     while (!close) {
+
         cout << "Single Linked List Operations:" << endl;
         cout << "1: Insertion (Old Method)" << endl;
         cout << "2: Insertion (Front Method)" << endl;
@@ -117,8 +126,10 @@ int main() {
         cout << "4: Delete (Search)" << endl;
         cout << "5: Display" << endl;
         cout << "0: Exit" << endl;
+
         cout << "Enter Choice:";
         cin >> choice;
+
         switch (choice) {
             case 1:
                 cout << "How many value you want to enter:";
@@ -142,7 +153,7 @@ int main() {
                 int search;
                 cout << "Enter Value to Search:";
                 cin >> search;
-                addbySearch(search);
+                addBySearch(search);
                 break;
             case 4:
                 int deleteValue;
