@@ -21,7 +21,7 @@ void insert(Node **head, int newData){
     }
 
     Node *temp = *head;
-    while (temp){
+    while (temp != nullptr){
         if (temp->next == nullptr){
             temp->next = newNode;
             break;
@@ -32,7 +32,7 @@ void insert(Node **head, int newData){
 
 void display(Node **head){
     Node *list = *head;
-    while (list){
+    while (list != nullptr){
         cout << list->data;
         if (list->next != nullptr){
             cout << ", ";
@@ -47,12 +47,12 @@ void sizeComparison(Node **list1, Node **list2){
     Node *temp1 = *list1;
     Node *temp2 = *list2;
 
-    while (temp1){
+    while (temp1 != nullptr){
         temp1= temp1->next;
         count1++;
     }
 
-    while (temp2){
+    while (temp2 != nullptr){
         temp2= temp2->next;
         count2++;
     }
@@ -69,7 +69,7 @@ void valuesComparison(Node **list1, Node **list2){
     Node *temp2 = *list2;
     bool equal = true;
 
-    while (temp1 && temp2){
+    while ((temp1 != nullptr) && (temp2 != nullptr)){
         if (temp1->data != temp2->data){
             cout << "Values Comparison: They are not equal" << endl;
             equal = false;

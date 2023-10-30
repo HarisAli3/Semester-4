@@ -44,7 +44,7 @@ void split(int X) {
     list2 = list1;
 //    Node *temp2 = list2;
 
-    while (temp1) {
+    while (temp1 != nullptr) {
 
         if (temp1->data == X) {
             cout << "Value Found:" << X << endl;

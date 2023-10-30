@@ -38,7 +38,7 @@ void display(Stack **top){
         cout << "Stack is Empty" << endl;
     } else {
         cout << "Stack Values: ";
-        while (display){
+        while (display != nullptr){
             cout << display->data << ", ";
             display = display->next;
         }
