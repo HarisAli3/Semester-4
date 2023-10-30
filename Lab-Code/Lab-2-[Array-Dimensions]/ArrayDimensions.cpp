@@ -15,7 +15,7 @@ void displayDatafor1D(int Array[], int Size) {
     }
 }
 
-void findMinimum1D(int Array[], int Size) {
+void findMinimum1D(const int Array[], int Size) {
     int temp = Array[0];
     for (int i = 0; i < Size; i++) {
         if (temp >= Array[i]) {
