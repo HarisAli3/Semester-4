@@ -191,7 +191,7 @@ int main() {
 
     while (!close) {
 
-        cout << "\nArray Operations:" << endl;
+        cout << "Array Operations:" << endl;
         cout << "1: Insertion" << endl;
         cout << "2: Deletion" << endl;
         cout << "3: Linear Search" << endl;
@@ -223,6 +223,7 @@ int main() {
                 cout << "Invalid Option " << endl;
                 break;
         }
+        cout << endl;
     }
     return 0;
 }
