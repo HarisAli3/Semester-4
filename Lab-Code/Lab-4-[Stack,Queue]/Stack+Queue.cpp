@@ -52,12 +52,12 @@ void EnQueue(int Queue[], int &Rear, int size) {
     }
 }
 
-void DeQueue(int &Front, int &Rear) {
+void DeQueue(int Queue[], int &Front, int &Rear) {
     if (Front == Rear) {
         cout << "Queue UnderFlow" << endl;
     } else {
-        cout << "De-Queued Value:" << Front << endl;
         ++Front;
+        cout << "De-Queued Value:" << Queue[Front] << endl;
     }
 }
 
@@ -124,7 +124,7 @@ int main() {
                 EnQueue(Queue, Rear, sizeQueue);
                 break;
             case 5:
-                DeQueue(Front, Rear);
+                DeQueue(Queue, Front, Rear);
                 break;
             case 6:
                 displayQueue(Queue, Front, Rear);
