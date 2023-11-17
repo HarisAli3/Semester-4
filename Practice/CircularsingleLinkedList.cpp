@@ -19,7 +19,7 @@ void insert(float X) {
     newNode->data = X;
     newNode->next = nullptr;
 
-    if (!head) {
+    if (head == nullptr) {
         head = newNode;
         tail = newNode;
         head->next = head;
@@ -35,7 +35,7 @@ void searchByValue(float X){
     Node* list = head;
     bool found = false;
     int count = 0;
-    while (list) {
+    while (list != nullptr) {
         if (list->data == X) {
             found = true;
             break;
@@ -57,7 +57,7 @@ void addbySearch(float X) {
     float value;
     Node* list = head;
     Node* newNode = new Node;
-    while (list) {
+    while (list != nullptr) {
         if (list->data == X) {
             cout << "Enter Value to Enter:";
             cin >> value;
@@ -107,7 +107,7 @@ void deleteNode(float X) {
 }
 
 void display() {
-    if (!head) {
+    if (head == nullptr) {
         cout << "List is empty." << endl;
         return;
     }

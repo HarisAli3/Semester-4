@@ -15,7 +15,7 @@ void displayDatafor1D(int Array[], int Size) {
     }
 }
 
-void findMinimum1D(int Array[], int Size) {
+void findMinimum1D(const int Array[], int Size) {
     int temp = Array[0];
     for (int i = 0; i < Size; i++) {
         if (temp >= Array[i]) {
@@ -114,16 +114,16 @@ int main() {
     int userChoice;
 
     do {
-        cout << "\n\n\t\t\tEnter Choice";
-        cout << "\n\n\t\t\t1. Enter Data for 1D Array";
-        cout << "\n\n\t\t\t2. Show Data for 1D Array";
-        cout << "\n\n\t\t\t3. Enter Data for 2D Array";
-        cout << "\n\n\t\t\t4. Show Data for 2D Array";
-        cout << "\n\n\t\t\t5. Enter Data for 3D Array";
-        cout << "\n\n\t\t\t6. Show Data for 3D Array";
-        cout << "\n\n\t\t\t7. Find Minimum Value for 1D Array";
-        cout << "\n\n\t\t\t8. Find Minimum Value for 3D Array";
-        cout << "\n\n\t\t\t0. Exit";
+        cout << "Enter Choice";
+        cout << "\n1. Enter Data for 1D Array";
+        cout << "\n2. Show Data for 1D Array";
+        cout << "\n3. Enter Data for 2D Array";
+        cout << "\n4. Show Data for 2D Array";
+        cout << "\n5. Enter Data for 3D Array";
+        cout << "\n6. Show Data for 3D Array";
+        cout << "\n7. Find Minimum Value for 1D Array";
+        cout << "\n8. Find Minimum Value for 3D Array";
+        cout << "\n0. Exit";
         cin >> userChoice;
         switch (userChoice) {
             case 1:

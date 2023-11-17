@@ -44,7 +44,7 @@ void display(Queue** front, Queue** rear) {
     } else {
         Queue* list = *front;
         cout << "Queue Data: ";
-        while (list) {
+        while (list != nullptr) {
             cout << list->data;
             if (list->next != nullptr) {
                 cout << ", ";

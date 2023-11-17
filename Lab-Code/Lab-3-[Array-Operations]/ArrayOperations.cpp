@@ -3,26 +3,33 @@
 using namespace std;
 
 void insertion() {
+
     int size;
     cout << "Enter Size for Array:";
     cin >> size;
+
     int array[size];
     cout << "Enter Values for Array of Size: " << size << endl;
+
     for (int i = 0; i < size; i++) {
         cout << "At Index " << i << ":";
         cin >> array[i];
     }
 
     int index = 2, value;
+
     cout << "Enter Value to Insert:";
     cin >> value;
     cout << "Enter Position for Value:";
     cin >> index;
+
     cout << "Before Insertion:" << endl;
     for (int i = 0; i < size; i++) {
         cout << "Index " << i << ": " << array[i] << endl;
     }
+
     size++;
+
     for (int i = size; i >= index; i--) {
         array[i] = array[i - 1];
     }
@@ -184,7 +191,7 @@ int main() {
 
     while (!close) {
 
-        cout << "\nArray Operations:" << endl;
+        cout << "Array Operations:" << endl;
         cout << "1: Insertion" << endl;
         cout << "2: Deletion" << endl;
         cout << "3: Linear Search" << endl;
@@ -216,6 +223,7 @@ int main() {
                 cout << "Invalid Option " << endl;
                 break;
         }
+        cout << endl;
     }
     return 0;
 }

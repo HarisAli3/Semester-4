@@ -11,23 +11,27 @@ struct Node {
     int data;
     Node *next;
 };
+
 Node *head;
 Node *tail;
 
 void insert(int X) {
 
     if (head == nullptr) {
+
         head = new Node;
         head->data = X;
         head->next = nullptr;
+
     } else {
+
         Node *newNode = new Node;
         newNode->data = X;
         newNode->next = nullptr;
 
         Node *list = head;
 
-        while (list) {
+        while (list != nullptr) {
             if (list->next == nullptr) {
                 list->next = newNode;
                 tail = newNode;
@@ -39,17 +43,21 @@ void insert(int X) {
 }
 
 void addFront(int X) {
+
     Node *newNode = new Node;
     newNode->data = X;
     newNode->next = head;
     head = newNode;
+
 }
 
-void addbySearch(int X) {
+void addBySearch(int X) {
+
     int value;
     Node *list = head;
     Node *newNode = new Node;
-    while (list) {
+
+    while (list != nullptr) {
         if (list->data == X) {
 
             cout << "Enter Value to Enter:";
@@ -72,7 +80,7 @@ void deleteNode(int X) {
     Node *list = head;
     Node *prev = nullptr; // Pointer to the previous node
 
-    while (list) {
+    while (list != nullptr) {
         if (list->data == X) {
             // Found the node to delete
             if (prev == nullptr) {
@@ -95,7 +103,7 @@ void deleteNode(int X) {
 void display() {
     Node *list = head;
     cout << "Linked List Values: ";
-    while (list) {
+    while (list != nullptr) {
         cout << list->data << ", ";
         list = list->next;
     }
@@ -110,6 +118,7 @@ int main() {
     int num;
     int value;
     while (!close) {
+
         cout << "Single Linked List Operations:" << endl;
         cout << "1: Insertion (Old Method)" << endl;
         cout << "2: Insertion (Front Method)" << endl;
@@ -117,8 +126,10 @@ int main() {
         cout << "4: Delete (Search)" << endl;
         cout << "5: Display" << endl;
         cout << "0: Exit" << endl;
+
         cout << "Enter Choice:";
         cin >> choice;
+
         switch (choice) {
             case 1:
                 cout << "How many value you want to enter:";
@@ -142,7 +153,7 @@ int main() {
                 int search;
                 cout << "Enter Value to Search:";
                 cin >> search;
-                addbySearch(search);
+                addBySearch(search);
                 break;
             case 4:
                 int deleteValue;
