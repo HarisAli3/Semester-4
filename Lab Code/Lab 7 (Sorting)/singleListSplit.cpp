@@ -51,7 +51,7 @@ void split(int X) {
 
             list3 = temp1->next;
 
-            list2->next = nullptr;
+            temp1->next = nullptr;
 
             break;
         }
