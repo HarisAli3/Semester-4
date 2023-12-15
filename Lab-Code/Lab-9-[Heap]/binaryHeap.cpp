@@ -30,20 +30,23 @@ public:
         return 2*i+1;
     }
     void display();
+    void deleteValue(int index);
+    void heapify(int index);
+    int Extract_Min();
 };
 void BinaryHeap::insert(int val){
-    if(heap_pointer== capacity){
+    if(heap_pointer== (capacity-1)){
         cout <<"Full heap"<<endl;
         return;
 
     }
     if(heap_pointer== 0){
-        heap_pointer++;
-        binary_heap[heap_pointer]=val;
+
+        binary_heap[++heap_pointer]=val;
         return;
     }
-    heap_pointer++;
-    binary_heap[heap_pointer]=val;
+
+    binary_heap[++heap_pointer]=val;
     int i=heap_pointer;
     while(i!=1 && binary_heap[parent(i)]>binary_heap[i]){
         swap(binary_heap,parent(i),i);
@@ -56,11 +59,39 @@ void BinaryHeap::display(){
     }
     cout <<endl;
 }
+void BinaryHeap::deleteValue(int index){
+    binary_heap[index]=binary_heap[heap_pointer];
+    heap_pointer--;
+    heapify(index);
+
+}
+void BinaryHeap::heapify(int i){
+    while(true){
+        int l= left_child(i);
+        int r= right_child(i);
+        int smallest = i;
+        if (l<=heap_pointer &&binary_heap[l] < binary_heap[i])
+            smallest =l;
+        if (r<=heap_pointer &&binary_heap[r]<binary_heap[smallest])
+            smallest =r;
+         if(smallest!=i){
+            swap(binary_heap,i,smallest);
+            i=smallest;
+
+        }else{
+            break;
+        }
+    }
+}
+int BinaryHeap::Extract_Min() {
+    if (heap_pointer==0){
+        return -1;
+    }
+    return binary_heap[1];
+}
 int main(){
-    int size;
-    cout <<"Enter the size: ";
-    cin>>size;
-    BinaryHeap obj(size);
+
+    BinaryHeap obj(8);
     cout <<"....Binary heap...."<<endl;
     obj.insert( 5);
     obj.insert( 3);
@@ -69,6 +100,18 @@ int main(){
     obj.insert( 17);
     obj.insert( 8);
     obj.insert( 20);
+    obj.insert( 25);
     obj.display();
+    int min=obj.Extract_Min();
+    if(min==-1){
+        cout <<"Heap is Empty"<<endl;
+    }else{
+        cout <<"Minimum:"<<min<<endl;
+    }
+
+    cout <<"...Deleting Value...."<<endl;
+    obj.deleteValue(3);
+    obj.display();
+
     return 0;
 }
