@@ -12,19 +12,19 @@ struct Node {
     Node *next;
 };
 
-void insert_end(Node **head, int newData) {
+void insert_end(Node *&head, int newData) {
 
     Node *newNode = new Node;
     newNode->data = newData;
-    newNode->prev = *head;
+    newNode->prev = head;
     newNode->next = nullptr;
 
-    if (*head == nullptr) {
-        *head = newNode;
+    if (head == nullptr) {
+        head = newNode;
         newNode->prev = nullptr;
         return;
     }
-    Node *temp = *head;
+    Node *temp = head;
 
     while (temp->next != nullptr) {
         temp = temp->next;
@@ -48,10 +48,10 @@ void display(Node **head) {
     }
 }
 
-void merge_list(Node **list1, Node **list2, Node **list3) {
+void merge_list(Node *&list1, Node *&list2, Node *&list3) {
 
-    Node *temp1 = *list1;
-    Node *temp2 = *list2;
+    Node *temp1 = list1;
+    Node *temp2 = list2;
 
     while (temp1 != nullptr && temp2 != nullptr) {
         if (temp1->data > temp2->data) {
@@ -77,22 +77,22 @@ void merge_list(Node **list1, Node **list2, Node **list3) {
 int main() {
 
     Node *list1 = nullptr;
-    insert_end(&list1, 2);
-    insert_end(&list1, 5);
-    insert_end(&list1, 8);
-    insert_end(&list1, 13);
+    insert_end(list1, 2);
+    insert_end(list1, 5);
+    insert_end(list1, 8);
+    insert_end(list1, 13);
     cout << "Double Linked List 1:" << endl;
     display(&list1);
 
     Node *list2 = nullptr;
-    insert_end(&list2, 1);
-    insert_end(&list2, 6);
-    insert_end(&list2, 10);
+    insert_end(list2, 1);
+    insert_end(list2, 6);
+    insert_end(list2, 10);
     cout << "Double Linked List 2:" << endl;
     display(&list2);
 
     Node *list3 = nullptr;
-    merge_list(&list1, &list2, &list3);
+    merge_list(list1, list2, list3);
     cout << "Double Linked List 3:" << endl;
     display(&list3);
 

@@ -31,14 +31,16 @@ void insert(int X) {
 
         Node *list = head;
 
-        while (list != nullptr) {
-            if (list->next == nullptr) {
+        while (list->next != nullptr) {
+            list = list->next;
+/*            if (list->next == nullptr) {
                 list->next = newNode;
                 tail = newNode;
                 break;
             }
-            list = list->next;
+            list = list->next;*/
         }
+        list->next = newNode;
     }
 }
 
