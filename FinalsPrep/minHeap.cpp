@@ -1,174 +1,143 @@
 #include <iostream>
-
 using namespace std;
 
+void swap(int *ptr, int parent,int child){
 
-struct Node {
-    int data;
-    Node *next;
+    int temp = ptr[parent];
+    ptr[parent] = ptr[child];
+    ptr[child] = temp;
+}
+
+class BinaryHeap{
+
+    int *binary_heap;
+    int capacity;
+    int heap_pointer;
+
+public:
+    BinaryHeap(int size){
+        binary_heap = new int[size];
+        heap_pointer = 0;
+        capacity = size;
+    }
+
+    void insert(int val);
+
+    int parent(int i){
+        return i/2;
+    }
+
+    int left_child(int i){
+        return 2*i;
+    }
+
+    int right_child(int i){
+        return 2 * i + 1;
+    }
+
+    void display();
+    void deleteValue(int index);
+    void heapify(int index);
+    int Extract_Min();
+
 };
+void BinaryHeap::insert(int val){
 
-Node *head;
-Node *tail;
-
-void insert(int X) {
-
-    if (head == nullptr) {
-
-        head = new Node;
-        head->data = X;
-        head->next = nullptr;
-
-    } else {
-
-        Node *newNode = new Node;
-        newNode->data = X;
-        newNode->next = nullptr;
-
-        Node *list = head;
-
-        while (list->next != nullptr) {
-            list = list->next;
-/*            if (list->next == nullptr) {
-                list->next = newNode;
-                tail = newNode;
-                break;
-            }
-            list = list->next;*/
-        }
-        list->next = newNode;
+    if(heap_pointer == (capacity - 1)){
+        cout <<"Full heap"<<endl;
+        return;
     }
-}
-
-void addFront(int X) {
-
-    Node *newNode = new Node;
-    newNode->data = X;
-    newNode->next = head;
-    head = newNode;
-
-}
-
-void addBySearch(int X) {
-
-    int value;
-    Node *list = head;
-    Node *newNode = new Node;
-
-    while (list != nullptr) {
-        if (list->data == X) {
-
-            cout << "Enter Value to Enter:";
-            cin >> value;
-
-            Node *y = list->next;
-            list->next = newNode;
-            newNode->next = y;
-
-            newNode->data = value;
-            list->next = newNode;
-
-            break;
-        }
-        list = list->next;
-    }
-}
-
-void deleteNode(int X) {
-    Node *list = head;
-    Node *prev = nullptr; // Pointer to the previous node
-
-    while (list != nullptr) {
-        if (list->data == X) {
-            // Found the node to delete
-            if (prev == nullptr) {
-                // If the node to delete is the head node
-                head = list->next;
-            } else {
-                // If the node to delete is not the head node
-                prev->next = list->next;
-            }
-            delete list; // Deallocate the memory of the node
-            return; // Exit the function after deleting the node
-        }
-        prev = list;
-        list = list->next;
+    if(heap_pointer == 0){
+        binary_heap[++heap_pointer]=val;
+        return;
     }
 
-    cout << "Node with value " << X << " not found in the list." << endl;
-}
+    binary_heap[++heap_pointer] = val;
+    int i = heap_pointer;
 
-void display() {
-    Node *list = head;
-    cout << "Linked List Values: ";
-    while (list != nullptr) {
-        cout << list->data << ", ";
-        list = list->next;
+    while(i != 1 && binary_heap[parent(i)] > binary_heap[i]) {
+        swap(binary_heap,parent(i),i);
+        i = parent(i);
+    }
+}
+void BinaryHeap::display(){
+
+    for(int i = 1; i<=heap_pointer; i++){
+        cout << binary_heap[i] << " ";
     }
     cout << endl;
 }
+void BinaryHeap::deleteValue(int index){
 
-int main() {
+    binary_heap[index] = binary_heap[heap_pointer];
+    heap_pointer--;
+    heapify(index);
 
-    bool close = false;
-    int choice;
+}
+void BinaryHeap::heapify(int i){
+    while(true){
 
-    int num;
-    int value;
-    while (!close) {
+        // if i is a leaf node
+        // if left child is greater than heap pointer
+        // if right child is greater than heap pointer
+        // if parent is less than both children
 
-        cout << "Single Linked List Operations:" << endl;
-        cout << "1: Insertion (Old Method)" << endl;
-        cout << "2: Insertion (Front Method)" << endl;
-        cout << "3: Insertion (Search)" << endl;
-        cout << "4: Delete (Search)" << endl;
-        cout << "5: Display" << endl;
-        cout << "0: Exit" << endl;
+        int l = left_child(i);
+        int r = right_child(i);
+        int smallest = i;
 
-        cout << "Enter Choice:";
-        cin >> choice;
+        if (l <= heap_pointer &&binary_heap[l] < binary_heap[i])
+            smallest = l;
 
-        switch (choice) {
-            case 1:
-                cout << "How many value you want to enter:";
-                cin >> num;
-                for (int i = 0; i < num; i++) {
-                    cout << "Enter Value:";
-                    cin >> value;
-                    insert(value);
-                }
-                break;
-            case 2:
-                cout << "How many value you want to enter:";
-                cin >> num;
-                for (int i = 0; i < num; i++) {
-                    cout << "Enter Value:";
-                    cin >> value;
-                    addFront(value);
-                }
-                break;
-            case 3:
-                int search;
-                cout << "Enter Value to Search:";
-                cin >> search;
-                addBySearch(search);
-                break;
-            case 4:
-                int deleteValue;
-                cout << "Enter Value to Search:";
-                cin >> deleteValue;
-                deleteNode(deleteValue);
-                break;
-            case 5:
-                display();
-                break;
-            case 0:
-                close = true;
-                break;
-            default:
-                cout << "Invalid Option" << endl;
-                break;
+        if (r <= heap_pointer &&binary_heap[r]<binary_heap[smallest])
+            smallest =r;
+
+        if(smallest != i){
+            swap(binary_heap,i,smallest);
+            i = smallest;
+
+        } else {
+            break;
         }
-        cout << endl;
     }
+}
+int BinaryHeap::Extract_Min() {
+
+    if (heap_pointer == 0){
+        return -1;
+    }
+    return binary_heap[1];
+}
+int main(){
+
+    BinaryHeap obj(8);
+
+    cout <<"....Binary heap...."<<endl;
+
+    obj.insert( 5);
+    obj.insert( 3);
+    obj.insert( 10);
+    obj.insert( 13);
+    obj.insert( 17);
+    obj.insert( 8);
+    obj.insert( 20);
+    obj.insert( 25);
+    obj.display();
+
+    int min = obj.Extract_Min();
+
+    if(min == -1){
+        cout <<"Heap is Empty"<<endl;
+    } else {
+        cout <<"Minimum:"<<min<<endl;
+    }
+
+    cout <<"...Deleting Value...."<<endl;
+
+    obj.deleteValue(3);
+
+    cout << "After Deletion of 3: ";
+    obj.display();
+
+    return 0;
 }
